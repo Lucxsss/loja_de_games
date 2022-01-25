@@ -61,7 +61,7 @@ public class ProdutoController {
 	@PostMapping("/save")
 	public ResponseEntity<Produto> saveProduto(@RequestBody Produto produto){
 		return ResponseEntity.status(201).body(repository.save(produto));
-	}
+	} 
 }
 
 
