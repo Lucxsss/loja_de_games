@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -43,4 +45,43 @@ public class ProdutoController {
 				});
 	}
 	
+	@GetMapping("/nome/{nome_produto}")
+	public ResponseEntity<List<Produto>> getByNome(@PathVariable(value = "nome_produto") String nome){
+		List<Produto> list = repository.findAllByNomeContainingIgnoreCase(nome);
+		
+		if(list.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nome não encotrado!");
+		} else {
+			return ResponseEntity.status(200).body(list);
+		}
+	}
+	
+	
+	//SAVE
+	@PostMapping("/save")
+	public ResponseEntity<Produto> saveProduto(@RequestBody Produto produto){
+		return ResponseEntity.status(201).body(repository.save(produto));
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
