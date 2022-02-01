@@ -7,19 +7,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.grupo2.lojadegames.model.Usuario;
 
-public class UserDetailslimp implements UserDetails {
+public class UserDetailslmp implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
 	private String email;
 	private String password;
 
-	public UserDetailslimp(Usuario user) {
+	public UserDetailslmp(Usuario user) {
 		this.email = user.getEmail();
 		this.password = user.getPassword();
 	}
 
-	public UserDetailslimp() {
+	public UserDetailslmp() {
 	}
 
 	@Override
