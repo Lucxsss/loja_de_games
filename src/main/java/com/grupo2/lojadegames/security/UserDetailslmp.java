@@ -7,19 +7,37 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.grupo2.lojadegames.model.Usuario;
 
-public class UserDetailslimp implements UserDetails {
+public class UserDetailslmp implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
 	private String email;
 	private String password;
 
-	public UserDetailslimp(Usuario user) {
+	public UserDetailslmp(Usuario user) {
 		this.email = user.getEmail();
 		this.password = user.getPassword();
+		
+		/* private Map<String, User> roles = new HashMap<>();
+
+		    @PostConstruct
+		    public void init() {
+		        roles.put("admin", new User("admin", "{noop}admin1", getAuthority("ROLE_ADMIN")));
+		        roles.put("user", new User("user", "{noop}user1", getAuthority("ROLE_USER")));
+		    }
+
+		    @Override
+		    public UserDetails loadUserByUsername(String username) {
+		        return roles.get(username);
+		    }
+
+		    private List<GrantedAuthority> getAuthority(String role) {
+		        return Collections.singletonList(new SimpleGrantedAuthority(role));
+		    }
+		}*/
 	}
 
-	public UserDetailslimp() {
+	public UserDetailslmp() {
 	}
 
 	@Override

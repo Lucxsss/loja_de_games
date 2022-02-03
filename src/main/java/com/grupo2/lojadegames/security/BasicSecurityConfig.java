@@ -25,6 +25,7 @@ public class BasicSecurityConfig {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/usuario/logar").permitAll()
+		http.authorizeRequests().antMatchers("/usuario/logar*").permitAll()
 				.antMatchers(HttpMethod.PUT, "/usuario/cadastrar").permitAll()
 				.anyRequest().authenticated()
 				.and().httpBasic()
